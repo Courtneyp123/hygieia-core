@@ -26,6 +26,9 @@ public interface BuildRepository extends CrudRepository<Build, ObjectId>, QueryD
     @Query(value="{'sourceChangeSet.scmRevisionNumber' : {$exists: true, $in: ?0}, 'collectorItemId': { $in: ?1 }}")
     List<Build> findBuildsForRevisionNumbersAndBuildCollectorItemIds(List<String> scmRevisionNumbers, List<ObjectId> buildCollectorItemId);
 
+    @Query(value="{'collectorItemId': ?0 }")
+    List<Build> findBuildsByCollectorItemId(ObjectId buildCollectorItemId);
+
     Build findTop1ByCollectorItemIdOrderByTimestampDesc(ObjectId collectorItemId);
 
     Build findTop1ByCollectorItemIdAndBuildStatusOrderByTimestampDesc(ObjectId collectorItemId, BuildStatus buildStatus);
