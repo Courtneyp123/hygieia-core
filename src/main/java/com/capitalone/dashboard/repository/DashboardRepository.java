@@ -40,6 +40,9 @@ public interface DashboardRepository extends PagingAndSortingRepository<Dashboar
 	@Query(value="{'widgets.options.teams.collectorItemId': ?0 }")
 	List<Dashboard> findProductDashboardsByTeamDashboardCollectorItemId(String teamDashboardCollectorItemId);
 
+	@Query(value="{'configurationItemBusServName': ?0 }")
+	List<Dashboard> findAllByBusServiceName(String busServiceName);
+
 	Iterable<Dashboard> findAllByConfigurationItemBusServName(String configurationItem);
 
 	Iterable<Dashboard> findAllByConfigurationItemBusAppName(String configurationItem);
