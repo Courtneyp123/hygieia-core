@@ -28,7 +28,7 @@ public interface BuildRepository extends CrudRepository<Build, ObjectId>, QueryD
 
     Build findTop1ByCollectorItemIdOrderByTimestampDesc(ObjectId collectorItemId);
 
-    List<Build> findTop10ByCollectorItemIdOrderByTimestampDesc(ObjectId collectorItemId);
+    List<Build> findTopNumOfBuildsToReturnByCollectorItemIdOrderByTimestampDesc(ObjectId collectorItemId, int numOfBuildsToReturn);
 
     Build findTop1ByCollectorItemIdAndBuildStatusOrderByTimestampDesc(ObjectId collectorItemId, BuildStatus buildStatus);
 
